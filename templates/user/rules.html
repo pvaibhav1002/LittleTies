@@ -1,0 +1,144 @@
+{%load static%}
+<!DOCTYPE html>
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LittleTies-Rules</title>
+    <link rel="shortcut icon" href="{% static "img/favicon.ico"%}" type="image/x-icon">
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="{% static "css/all.min.css" %}">
+    <!-- Theme style -->
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static "css/adminlte.min.css"%}">
+    <link rel="stylesheet" href="{% static "css/mydashboard.css"%}">
+</head>
+
+<body class="hold-transition layout-top-nav pb-5 container-fixed">
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
+      <div class="container">
+        <div class="navbar-brand">
+          <a href="{%url 'home' %}">
+            <img src="{% static "img/logo.png" %}" alt="Logo" class="brand-image">
+        </a>          
+        </div>
+  
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav" style="width:100%">
+            <li class="nav-item">
+              <a href="{%url 'user_dashboard' %}" class="nav-link"><strong>Agencies</strong></a>
+            </li>
+            <li class="nav-item">
+              <a href="{%url 'rules' %}" class="nav-link  active"><strong>Rules</strong></a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="padding-top: 0px;">
+                <img src="{{extra.picture}}" style="width: 40px;height: 40px;border-radius:50%;"/>
+              </a>
+              <ul class="dropdown-menu">
+                <li><center><a href="{%url 'edit_profile' %}" class="dropdown-item"><strong>Edit Profile</strong> </a></center></li>
+                <li><center><button class="btn btn-danger"><a href="{% url 'acc_logout' %}"><strong>Logout</strong></a></button></center></li>
+              </ul>
+            </li>
+          </ul>
+        </div> 
+      </div>
+    </nav>
+
+    <!-- /.navbar -->
+    <div class="wrapper">
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <div class="content-header">
+                <div class="container">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h2>RULES:</h2>
+                        </div><!-- /.col -->
+                    </div><!-- /.row -->
+                </div><!-- /.container-fluid -->
+            </div>
+            <!-- /.content-header -->
+
+            <!-- Main content -->
+            <div class="content mb-5">
+                <div class="container">
+                    <div class="row data-color">
+                        <div class="container data p-5">
+                            <h5>Documents Required:</h5>
+                            <ol>
+                                <li>Current family photograph/ photograph of person adopting a child.</li>
+                                <li>Aadhar Card or Passport or Voter card or Driving License of the prospective adoptive parents or Birth Certificate or Overseas Citizen of India card of the prospective adoptive parents (if applicable) and PAN Card (if applicable).</li>
+                                <li>Proof of residence (Aadhar card/ voter card/ passport/ current electricity bill/ telephone bill).</li>
+                                <li>Proof of income of last year (salary slip/ income certificate issued by Govt. department/ income tax return).</li>
+                                <li>Certificate from a medical practitioner certifying that the prospective adoptive parents do not suffer from any chronic, contagious or fatal disease and they are fit to adopt (In the event of a married couple, upload the applicant's respective medical certificate).</li>
+                                <li>Marriage certificate/Divorce Decree/Declaration from the competent court or affidavit on oath pertaining to divorce in case of divorce governed by personal law where decree of divorce is not mandatory/Death certificate of spouse whichever is applicable.</li>
+                                <li>Undertaking from the relative in case single prospective adoption parents (if applicable).</li>
+                                <li>Consent of the older child/children in the adoptive family.</li>
+                            </ol>
+                            
+
+                            <hr>
+                            <h5>Procedure:</h5>
+                            <h6>Step 1 - Registration</h6>
+                            <p>Prospective adoptive parents need to get registered with an authorized agency. Recognised Indian Placement Agencies (RIPA) and Special Adoption Agency (SPA) are the agencies which are allowed to make such registrations in India. In addition, the prospective adoptive parents can visit the Adoption Coordination Agency in their area where the social worker will explain the process and take you through the formalities, paperwork and general preparation required for registration.</p>
+                            <h6>Step 2 - Home Study and Counseling</h6>
+                            <p>A social worker for the registration agency will make a visit to the home of the prospective adoptive parent in order to do a home study. The agency might also need the parents to attend counselling sessions to understand prospective parents’ motivation, preparation, strengths and weaknesses. As per CARA regulation, the home study must be completed within three months from the registration date.<br> The conclusion from the home study and counselling sessions is then reported to the honourable court.</p>
+                            <h6>Step 3 - Referral of the Child</h6>
+                            <p>The agency shall intimate the interested couple whenever there is a child ready for adoption. The agency will share medical reports, physical examination reports and other relevant information with the couple and allow them to spend time with the child once they are comfortable with the details.
+                            </p>
+                            <h6>Step 4 - Acceptance of the Child</h6>
+                            <p>Once the parents are comfortable with a child, they will have to sign a few documents pertaining to the acceptance of the child.
+                            </p>
+                            <h6>Step 5 - Filing of Petition</h6>
+                            <p>All necessary documents are submitted to a lawyer who prepares a petition to be presented to the court. Once the petition is ready, the adoptive parents will have to visit the court and sign the petition in front of the court officer.
+                            </p>
+                            <h6>Step 6 - Pre-Adoption Foster Care</h6>
+                            <p>Once the petition is signed in the court, the adoptive parents can take the child to a pre-adoption foster care centre and understand the habits of the child from the nursing staff before taking the child home.
+                            </p>
+                            <h6>Step 7 - Court Hearing</h6>
+                            <p>The parents have to attend a court hearing along with the child. The hearing is held in a closed room with a judge. The judge may ask a few questions and mention the amount that needs to be invested in the child’s name.
+                            </p>
+                            <h6>Step 8 - Court Order</h6>
+                            <p>Once the receipt of investment made is shown, the judge shall pass the adoption orders.
+                            </p>
+                            <h6>Step 9 - Follow Up</h6>
+                            <p>Post-completion of the adoption, the agency must submit follow-up reports to the court on the child’s well-being. This may continue for 1-2 years.</p>
+
+                        </div>
+                    </div>
+                </div><!-- /.container-fluid -->
+            </div>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
+    </div>
+    <!-- jQuery -->
+    <script src="{% static "js/jquery.min.js"%}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <!-- AdminLTE App -->
+    <script src="{% static "css/adminlte.min.css"%}"></script>
+    <!-- AdminLTE for demo purposes -->
+</body>
+
+</html>

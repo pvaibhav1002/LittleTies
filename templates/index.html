@@ -1,0 +1,380 @@
+{% load static %}
+{% load socialaccount %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>LittleTies</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link rel="shortcut icon" href="{% static "img/favicon.ico"%}" type="image/x-icon">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Amatic+SC:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet">
+  <link href="{% static "css/bootstrap-icons/bootstrap-icons.css" %}" rel="stylesheet">
+  <link href="{% static "css/aos.css" %}" rel="stylesheet">
+  <link href="{% static "css/glightbox.min.css" %}" rel="stylesheet">
+  <link href="{% static "css/swiper-bundle.min.css" %}" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+  <!-- Template Main CSS File -->
+  <link href="{% static "css/main.css" %}" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+    <div class="container-fluid d-flex align-items-center justify-content-between px-5">
+
+      <a href="{%url 'home' %}" class="logo d-flex align-items-center me-auto me-lg-0">
+        <img src="{% static "img/logo.png" %}" alt="">
+      </a>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#aim">Aim</a></li>
+          <li><a href="#teams">Our Team</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li>
+            {% if extra is None %}
+              <div class="dropdown">
+                  <a class="btn btn-secondary dropdown-toggle btn-book-a-table" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="{% static "img/google_logo.png" %}" alt="Signup with Google" style="width: 20px;">&nbsp;&nbsp;Signup/Login
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{% provider_login_url 'google' %}?next=/login-user/">As Parent</a></li>
+                    <li><a class="dropdown-item" href="{% provider_login_url 'google' %}?next=/login-agency/">As Agency</a></li>
+                  </ul>
+              </div>     
+            {% else %}
+              <div style="">
+                <a href="{%url 'login' %}"><img src="{{extra.picture}}" style="width: 40px;height: 40px;border-radius:50%;margin-left: 20px;
+                  "/></a>
+              </div>
+            {% endif %}
+                     
+          </li>
+        </ul>
+      </nav><!-- .navbar -->
+
+      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+
+    </div>
+  </header><!-- End Header -->
+
+  
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="hero">
+  
+    <div class="info d-flex align-items-center">
+      <div class="container">
+        
+        <div class="row justify-content-center">
+          <div class="col-lg-6 text-center">
+            <h2 data-aos="fade-down">Welcome to</h2>
+            <h1 data-aos="fade-down"><span>LittleTies</span></h1>
+            <p data-aos="fade-up">Where love knows no boundaries!</p>
+            <p data-aos="fade-up">Find Love and Create Lifelong Bonds: Start Your Journey to Parenthood Today!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+
+      <div class="carousel-item active" style="background-image: url({% static "img/slider1.png" %})"></div>
+      <div class="carousel-item" style="background-image: url({% static "img/slider2.png" %})"></div>
+      <div class="carousel-item" style="background-image: url({% static "img/slider3.jpg" %})"></div>
+      {% comment %} <div class="carousel-item" style="background-image: url({% static "img/slider4.png" %})"></div> {% endcomment %}
+
+      <div class="myalert" style="z-index:4;position:absolute;top:-5px">
+        {% if messages %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          {% for message in messages %}
+          <center><strong>{{ message }}</strong></center>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+
+      <a class="carousel-control-prev" href="#hero-carousel" role="button" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
+        
+      </a>
+
+      <a class="carousel-control-next" href="#hero-carousel" role="button" data-bs-slide="next">
+        <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+      </a>
+
+    </div>
+
+  </section><!-- End Hero Section -->
+
+  <main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about mb-5 py-3" style="background-color:#eee">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-header">
+          <h2>About Us</h2>
+          <p>Learn More <span>About Us</span></p>
+        </div>
+
+        <div class="row">
+          <div class="col-md-7 mb-3 d-flex align-items-center justify-content-center">
+            <div class="container">
+              <img src="./{% static "img/about.jpg" %}" style="width: 100%;border-radius: 10px;" alt="child-hand">
+            </div>
+          </div>
+
+          <div class="col-md-5 d-flex align-items-center justify-content-center  mb-3">
+            <div class="content ps-0 ps-lg-5">
+              <i class="bi bi-people" style="float: left;color: bea;"></i>
+              <p class="fst-italic">
+                &nbsp;&nbsp;Welcome to our Adoption Platform, where dreams of parenthood come true. Experience the joy of welcoming
+                a child into your loving family and creating a lifelong connection.
+              </p>
+              <i class="bi bi-people" style="float: left;color: blueviolet;"></i>
+              <p class="fst-italic">
+                &nbsp;&nbsp;Together, let's empower these resilient souls, building a foundation of hope and possibilities. Join us
+                in transforming lives and creating a brighter future!
+              </p>
+              <i class="bi bi-people" style="float: left;color: blueviolet;"></i>
+              <p class="fst-italic">
+                &nbsp;&nbsp;We can build brighter futures for children. Join us in creating loving homes, one adoption at
+                a time.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End About Section -->
+
+    <!-- ======= Aim Section ======= -->
+    <section id="aim" class="about mb-5 py-3">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-header">
+          <h2>Our Aim</h2>
+          <p>Help Us Reach <span>Our Aim</span></p>
+        </div>
+
+        <div class="row">
+          <div class="col-md-5 d-flex align-items-center justify-content-center">
+            <div class="content ps-0 ps-lg-5 mb-3">
+              <i class="bi bi-heart-arrow" style="float: left;color: darkviolet;"></i>
+              <p class="fst-italic">
+                &nbsp;&nbsp;We are dedicated to connecting prospective parents with children who are eagerly waiting to be embraced
+                into a forever home.
+              </p>
+              <i class="bi bi-heart-arrow" style="float: left;color: darkviolet;"></i>
+              <p class="fst-italic">
+                &nbsp;&nbsp;Our mission is to facilitate the journey of adoption by providing a safe and supportive environment
+                where dreams of parenthood and the hopes of a child can unite.
+              </p>
+              <i class="bi bi-heart-arrow" style="float: left;color: darkviolet;"></i>
+              <p class="fst-italic">
+                &nbsp;&nbsp;Children's limited time as children shouldn't be wasted worrying if they are going to be part of a new
+                family next week, next month, or next year.
+              </p>
+              <i class="bi bi-heart-arrow" style="float: left;color: darkviolet;"></i>
+              <p class="fst-italic">
+                &nbsp;&nbsp;Our website is a captivating showcase of heartfelt stories, precious moments, and the power of love.
+              </p>
+              <i class="bi bi-heart-arrow" style="float: left;color: darkviolet;"></i>
+              <p class="fst-italic">
+                &nbsp;&nbsp;Together, we can build brighter futures for children. Join us in creating loving homes, one adoption at
+                a time.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-7 mb-3 d-flex align-items-center justify-content-center">
+            <div class="container">
+              <img src="./{% static "img/aim.jpg" %}" style="width: 100%;border-radius:10px;" alt="child-hand">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Aim Section -->
+
+    <!-- ======= Teams Section ======= -->
+    <section id="teams" class="teams section-bg mb-5 py-3">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-header py-3">
+          <h2>Team</h2>
+          <p>Our <span>Proffesional</span> Team</p>
+        </div>
+
+        <div class="row gy-4 justify-content-center">
+
+          <div class="col-lg-3 col-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+            <div class="chef-member">
+              <div class="member-img">
+                <img src="{% static "img/soham.png" %}" class="img-fluid" alt="">
+              </div>
+              <div class="member-info">
+                <h4>Soham Padwal</h4>
+                <span></span>
+              </div>
+            </div>
+          </div><!-- End teams Member -->
+
+          {% comment %} <div class="col-lg-3 col-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
+            <div class="chef-member">
+              <div class="member-img">
+                <img src="{% static "img/aditya.png" %}" class="img-fluid" alt="">
+              </div>
+              <div class="member-info">
+                <h4>Aaditya Meher</h4>
+                <span></span>
+              </div>
+            </div>
+          </div><!-- End teams Member --> {% endcomment %}
+
+          <div class="col-lg-3 col-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
+            <div class="chef-member">
+              <div class="member-img">
+                <img src="{% static "img/amruta.jpg" %}" class="img-fluid" alt="">
+              </div>
+              <div class="member-info">
+                <h4>Amruta Wani</h4>
+                <span></span>
+              </div>
+            </div>
+          </div><!-- End teams Member -->
+
+          {% comment %} <div class="col-lg-3 col-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
+            <div class="chef-member">
+              <div class="member-img">
+                <img src="{% static "img/jeet.png" %}" class="img-fluid" alt="">
+              </div>
+              <div class="member-info">
+                <h4>Jeet Harne</h4>
+                <span></span>
+              </div>
+            </div>
+          </div><!-- End teams Member --> {% endcomment %}
+
+          <div class="col-lg-3 col-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
+            <div class="chef-member">
+              <div class="member-img">
+                <img src="{% static "img/vaibhav.png" %}" class="img-fluid" alt="">
+              </div>
+              <div class="member-info">
+                <h4>Vaibhav Patil</h4>
+                <span></span>
+              </div>
+            </div>
+          </div><!-- End teams Member -->
+        </div>
+
+      </div>
+    </section><!-- End Teams Section -->
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact mb-5 py-3">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-header">
+          <h2>Contact</h2>
+          <p>Need Help? <span>Contact Us</span></p>
+        </div>
+
+        <div class="mb-3">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7560.853441803609!2d73.74868469357907!3d18.644837800000012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2b9f1ca8dab03%3A0x6237cfbd36f9acf9!2sD.Y.%20Patil%20College%20of%20Engineering!5e0!3m2!1sen!2sin!4v1685101294277!5m2!1sen!2sin" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div><!-- End Google Maps -->
+
+        <div class="row gy-4">
+
+          <div class="col-md-4">
+            <div class="info-item  d-flex align-items-center">
+              <i class="icon bi bi-map flex-shrink-0"></i>
+              <div>
+                <a href="https://maps.app.goo.gl/VsX38MMqhpYLCHXk7">
+                  <h3>Our Address</h3>
+                  <p>Sector 29, Nigdi Pradhikaran, Pimpri-Chinchwad, near Akurdi Railway Station, Pune, Maharashtra 411044</p>
+                </a>
+              </div>
+            </div>
+          </div><!-- End Info Item -->
+
+          <div class="col-md-4">
+            <div class="info-item d-flex align-items-center">
+              <i class="icon bi bi-envelope flex-shrink-0"></i>
+              <div>
+                <a href="mailto:contact@littleties.com">
+                  <h3>Email Us</h3>
+                  <p>contact@littleties.com</p>
+                </a>
+              </div>
+            </div>
+          </div><!-- End Info Item -->
+
+          <div class="col-md-4">
+            <div class="info-item  d-flex align-items-center">
+              <i class="icon bi bi-telephone flex-shrink-0"></i>
+              <div>
+                <a href="tel:+91 937 347 7561">
+                  <h3>Call Us</h3>
+                  <p>+91 937 347 7561</p>
+                </a>
+              </div>
+            </div>
+          </div><!-- End Info Item -->
+        </div>
+      </div>
+    </section><!-- End Contact Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>LittleTies</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+      </div>
+    </div>
+
+  </footer><!-- End Footer -->
+  <!-- End Footer -->
+
+  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static "js/bootstrap.bundle.min.js" %}"></script>
+  <script src="{% static "js/aos.js" %}"></script>
+  <script src="{% static "js/glightbox.min.js" %}"></script>
+  <script src="{% static "js/purecounter_vanilla.js" %}"></script>
+  <script src="{% static "js/swiper-bundle.min.js" %}"></script>
+  <!-- Template Main JS File -->
+  <script src="{% static "js/main.js" %}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+</body>
+
+</html>
